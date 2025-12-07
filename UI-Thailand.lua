@@ -5529,11 +5529,11 @@ registerRight("Shop", function(scroll)
     end)
 end)
 ------------------------------------------------------------
--- แท็บหลัก (ใช้ key อังกฤษภายใน แต่โชว์เป็นภาษาไทย)
+-- แท็บหลัก (ใช้ id อังกฤษภายใน แต่โชว์เป็นภาษาไทย)
 ------------------------------------------------------------
 
 -- ถ้าในปุ่มมี TextLabel ข้างใน ให้ใส่ชื่อฟิลด์ตรงนี้
--- ถ้าใช้ Text ที่ตัวปุ่มเอง เปลี่ยนเป็น "Text" แทน
+-- ถ้าใช้ Text ที่ตัวปุ่มเอง ให้เปลี่ยนเป็น "Text" แทน
 local BUTTON_TEXT_CHILD_NAME = "TextLabel"
 
 local tabs = {
@@ -5546,7 +5546,7 @@ local tabs = {
     {btn = btnSettings, set = setSettingsActive, id = "Settings", label = "การตั้งค่า",    icon = ICON_SETTINGS},
 }
 
--- เซ็ตชื่อที่โชว์บนปุ่ม (ฝั่งซ้าย) ตาม label
+-- เซ็ตชื่อที่โชว์บนปุ่ม (ฝั่งซ้าย) ตาม label (ภาษาไทย)
 for _, t in ipairs(tabs) do
     local b = t.btn
     if not b then continue end
@@ -5562,7 +5562,7 @@ end
 local lastLeftY = 0
 
 local function activateTab(t)
-    --จำตำแหน่งสกอร์ลซ้ายไว้ก่อน
+    -- จำตำแหน่งสกอร์ลซ้ายไว้ก่อน
     lastLeftY = LeftScroll.CanvasPosition.Y
 
     -- set active / inactive
@@ -5570,8 +5570,7 @@ local function activateTab(t)
         x.set(x == t)
     end
 
-    -- ใช้ id (อังกฤษ) เป็น key ภายใน แก้ปัญหา registerRight
-    -- ต้องไปเช็คว่า showRight รับ key อะไร ถ้าเดิมเป็นชื่ออังกฤษ ให้ใช้ t.id แบบนี้ถูกแล้ว
+    -- ใช้ id (อังกฤษ) เป็น key ภายใน เพื่อให้ตรงกับ registerRight("Player") ฯลฯ
     showRight(t.id, t.icon)
 
     -- รักษา scroll position
