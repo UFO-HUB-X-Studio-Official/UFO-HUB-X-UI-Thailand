@@ -2826,7 +2826,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row1",
         base + 2,
-        "เปิด เห็นผู้เล่นทะลุกำแพง)",
+        "เปิด เห็นผู้เล่นทะลุกำแพง",
         function() return XR.xrayEnabled end,
         setXrayEnabled
     )
