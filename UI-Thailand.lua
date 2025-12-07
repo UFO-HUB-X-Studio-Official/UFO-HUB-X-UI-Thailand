@@ -3932,7 +3932,7 @@ registerRight("Update", function(scroll)
     head.TextSize = 16
     head.TextColor3 = THEME.TEXT
     head.TextXAlignment = Enum.TextXAlignment.Left
-    head.Text = "Social update UFO HUB X 📣"
+    head.Text = "》》》อัปเดตโซเชียล UFO HUB X 📣《《《"
     head.LayoutOrder = base; base += 1
 
     -- press effect util (darken briefly)
@@ -3991,10 +3991,10 @@ registerRight("Update", function(scroll)
             if item.link ~= "" then
                 local ok=false
                 if typeof(setclipboard)=="function" then ok = pcall(function() setclipboard(item.link) end) end
-                QuickToast(item.label .. " — Link copied ✅")
-                if not ok then print("[UFO HUB X] Clipboard not available; link: "..item.link) end
+                QuickToast(item.label .. " — คัดลอกลิงก์แล้ว ✅")
+                if not ok then print("[UFO HUB X] ไม่สามารถใช้คลิปบอร์ดได้; ลิงก์: "..item.link) end
             else
-                QuickToast(item.label .. " — No link set")
+                QuickToast(item.label .. " — ไม่มีลิงก์")
             end
         end)
     end
