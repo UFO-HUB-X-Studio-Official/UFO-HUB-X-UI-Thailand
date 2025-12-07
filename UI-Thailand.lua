@@ -5534,9 +5534,9 @@ local tabs = {
     {btn = btnHome,     set = setHomeActive,     name = "Home",     icon = ICON_HOME},
     {btn = btnQuest,    set = setQuestActive,    name = "Quest",    icon = ICON_QUEST},
     {btn = btnShop,     set = setShopActive,     name = "Shop",     icon = ICON_SHOP},
-    {btn = btnUpdate,   set = setUpdateActive,   name = "อัปเดต",   icon = ICON_UPDATE},
-    {btn = btnServer,   set = setServerActive,   name = "เซิร์ฟเวอร์",   icon = ICON_SERVER},
-    {btn = btnSettings, set = setSettingsActive, name = "การตั้งค่า", icon = ICON_SETTINGS},
+    {btn = btnUpdate,   set = setUpdateActive,   name = "Update",   icon = ICON_UPDATE},
+    {btn = btnServer,   set = setServerActive,   name = "Server",   icon = ICON_SERVER},
+    {btn = btnSettings, set = setSettingsActive, name = "Settings", icon = ICON_SETTINGS},
 }
 
 local function activateTab(t)
@@ -5571,6 +5571,8 @@ end
 
 -- เปิดด้วยแท็บแรก
 activateTab(tabs[1])
+btnSettings.Text = "การตั้งค่า"    -- เวลาใช้ภาษาไทย
+-- หรือ "Settings" ตอนใช้ภาษาอังกฤษ
 
 -- ===== Start visible & sync toggle to this UI =====
 setOpen(true)
