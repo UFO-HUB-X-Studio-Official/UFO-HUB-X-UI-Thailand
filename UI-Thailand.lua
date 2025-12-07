@@ -1676,13 +1676,13 @@ registerRight("Player", function(scroll)
     header.BackgroundTransparency=1; header.Size=UDim2.new(1,0,0,32)
     header.Font=Enum.Font.GothamBold; header.TextSize=16; header.TextColor3=THEME.WHITE
     header.TextXAlignment=Enum.TextXAlignment.Left
-    header.Text="Fast Run, High Jump & Fast Swim 🏃‍♂️💨🦘🌊"
+    header.Text="โหมดความไว ⚡"
 
     -- Master
     local master=Instance.new("Frame",scroll); master.Name="RJ_Master"; master.LayoutOrder=baseOrder+1
     master.Size=UDim2.new(1,-6,0,46); master.BackgroundColor3=THEME.BLACK; corner(master,12); stroke(master,2.2,THEME.GREEN)
     local mLab=Instance.new("TextLabel",master); mLab.BackgroundTransparency=1; mLab.Size=UDim2.new(1,-140,1,0); mLab.Position=UDim2.new(0,16,0,0)
-    mLab.Font=Enum.Font.GothamBold; mLab.TextSize=13; mLab.TextColor3=THEME.WHITE; mLab.TextXAlignment=Enum.TextXAlignment.Left; mLab.Text="Enable Run/Jump/Swim Boost"
+    mLab.Font=Enum.Font.GothamBold; mLab.TextSize=13; mLab.TextColor3=THEME.WHITE; mLab.TextXAlignment=Enum.TextXAlignment.Left; mLab.Text="เปิด โหมดความไว ⚡"
     local mSw=Instance.new("Frame",master); mSw.AnchorPoint=Vector2.new(1,0.5); mSw.Position=UDim2.new(1,-12,0.5,0)
     mSw.Size=UDim2.fromOffset(52,26); mSw.BackgroundColor3=THEME.BLACK; corner(mSw,13); stroke(mSw,1.8, masterOn and THEME.GREEN or THEME.RED)
     local mKnob=Instance.new("Frame",mSw); mKnob.Size=UDim2.fromOffset(22,22); mKnob.Position=UDim2.new(masterOn and 1 or 0, masterOn and -24 or 2, 0.5,-11); mKnob.BackgroundColor3=THEME.WHITE; corner(mKnob,11)
@@ -1805,17 +1805,17 @@ registerRight("Player", function(scroll)
     end
 
     -- === Sliders in correct order: Run → Jump → Swim ===
-    buildSlider("RJ_Run",  baseOrder+2, "Run Speed",
+    buildSlider("RJ_Run",  baseOrder+2, "ปรับ การวิ่งไว",
         function() return runRel end,
         function(r) runRel=math.clamp(r,0,1); RJ.remember.runRel=runRel; applyStats() end,
         "runRel")
 
-    buildSlider("RJ_Jump", baseOrder+3, "Jump Power",
+    buildSlider("RJ_Jump", baseOrder+3, "ปรับ กระโดด สูง",
         function() return jumpRel end,
         function(r) jumpRel=math.clamp(r,0,1); RJ.remember.jumpRel=jumpRel; applyStats() end,
         "jumpRel")
 
-    buildSlider("RJ_Swim", baseOrder+4, "Swim Speed",
+    buildSlider("RJ_Swim", baseOrder+4, "ปรับ ว่ายน้ำไว",
         function() return swimRel end,
         function(r) swimRel=math.clamp(r,0,1); RJ.remember.swimRel=swimRel; applyStats() end,
         "swimRel")
@@ -1827,7 +1827,7 @@ registerRight("Player", function(scroll)
     noc.Size=UDim2.new(1,-6,0,46); noc.BackgroundColor3=THEME.BLACK; corner(noc,12); stroke(noc,2.2,THEME.GREEN)
     local nLab=Instance.new("TextLabel",noc); nLab.BackgroundTransparency=1; nLab.Size=UDim2.new(1,-140,1,0); nLab.Position=UDim2.new(0,16,0,0)
     nLab.Font=Enum.Font.GothamBold; nLab.TextSize=13; nLab.TextColor3=THEME.WHITE; nLab.TextXAlignment=Enum.TextXAlignment.Left
-    nLab.Text="Thalu / No-Clip (Through walls)"
+    nLab.Text="ตัวละครทะลุทุกอย่าง"
     local nSw=Instance.new("Frame",noc); nSw.AnchorPoint=Vector2.new(1,0.5); nSw.Position=UDim2.new(1,-12,0.5,0)
     nSw.Size=UDim2.fromOffset(52,26); nSw.BackgroundColor3=THEME.BLACK; corner(nSw,13); stroke(nSw,1.8, noclipOn and THEME.GREEN or THEME.RED)
     local nKnob=Instance.new("Frame",nSw); nKnob.Size=UDim2.fromOffset(22,22); nKnob.Position=UDim2.new(noclipOn and 1 or 0, noclipOn and -24 or 2, 0.5,-11)
@@ -1854,7 +1854,7 @@ registerRight("Player", function(scroll)
     local inf=Instance.new("Frame",scroll); inf.Name="RJ_Inf"; inf.LayoutOrder=baseOrder+6
     inf.Size=UDim2.new(1,-6,0,46); inf.BackgroundColor3=THEME.BLACK; corner(inf,12); stroke(inf,2.2,THEME.GREEN)
     local iLab=Instance.new("TextLabel",inf); iLab.BackgroundTransparency=1; iLab.Size=UDim2.new(1,-140,1,0); iLab.Position=UDim2.new(0,16,0,0)
-    iLab.Font=Enum.Font.GothamBold; iLab.TextSize=13; iLab.TextColor3=THEME.WHITE; iLab.TextXAlignment=Enum.TextXAlignment.Left; iLab.Text="Infinite Jump"
+    iLab.Font=Enum.Font.GothamBold; iLab.TextSize=13; iLab.TextColor3=THEME.WHITE; iLab.TextXAlignment=Enum.TextXAlignment.Left; iLab.Text="กระโดดไม่จำกัด"
     local iSw=Instance.new("Frame",inf); iSw.AnchorPoint=Vector2.new(1,0.5); iSw.Position=UDim2.new(1,-12,0.5,0)
     iSw.Size=UDim2.fromOffset(52,26); iSw.BackgroundColor3=THEME.BLACK; corner(iSw,13); stroke(iSw,1.8, infJumpOn and THEME.GREEN or THEME.RED)
     local iKnob=Instance.new("Frame",iSw); iKnob.Size=UDim2.fromOffset(22,22); iKnob.Position=UDim2.new(infJumpOn and 1 or 0, infJumpOn and -24 or 2, 0.5,-11)
