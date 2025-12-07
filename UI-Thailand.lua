@@ -5536,7 +5536,7 @@ local tabs = {
     {btn = btnShop,     set = setShopActive,     name = "Shop",     icon = ICON_SHOP},
     {btn = btnUpdate,   set = setUpdateActive,   name = "อัปเดต",   icon = ICON_UPDATE},
     {btn = btnServer,   set = setServerActive,   name = "เซิร์ฟเวอร์",   icon = ICON_SERVER},
-    {btn = btnSettings, set = setSettingsActive, name = "การตั้งค่า", icon = ICON_SETTINGS},
+    {btn = btnSettings, set = setSettingsActive, name = "Settings", icon = ICON_SETTINGS},
 }
 
 local function activateTab(t)
