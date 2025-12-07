@@ -5102,82 +5102,48 @@ registerRight("Settings", function(scroll)
     ensureInputHooks()
     startWatcher()
 end)
-------------------------------------------------------------
--- แท็บหลัก (ใช้ id อังกฤษภายใน แต่โชว์เป็นภาษาไทย)
-------------------------------------------------------------
-
--- ถ้าในปุ่มมี TextLabel ข้างใน ให้ใส่ชื่อฟิลด์ตรงนี้
--- ถ้าใช้ Text ที่ตัวปุ่มเอง ให้เปลี่ยนเป็น "Text" แทน
-local BUTTON_TEXT_CHILD_NAME = "TextLabel"
-
+---- ========== ผูกปุ่มแท็บ + เปิดแท็บแรก ==========
 local tabs = {
-    {btn = btnPlayer,   set = setPlayerActive,   id = "Player",   label = "ผู้เล่น",       icon = ICON_PLAYER},
-    {btn = btnHome,     set = setHomeActive,     id = "Home",     label = "หน้าหลัก",     icon = ICON_HOME},
-    {btn = btnQuest,    set = setQuestActive,    id = "Quest",    label = "ภารกิจ",       icon = ICON_QUEST},
-    {btn = btnShop,     set = setShopActive,     id = "Shop",     label = "ร้านค้า",      icon = ICON_SHOP},
-    {btn = btnUpdate,   set = setUpdateActive,   id = "Update",   label = "อัปเดต",       icon = ICON_UPDATE},
-    {btn = btnServer,   set = setServerActive,   id = "Server",   label = "เซิร์ฟเวอร์",  icon = ICON_SERVER},
-    {btn = btnSettings, set = setSettingsActive, id = "Settings", label = "การตั้งค่า1",    icon = ICON_SETTINGS},
+    {btn = btnPlayer,   set = setPlayerActive,   name = "Player",   icon = ICON_PLAYER},
+    {btn = btnHome,     set = setHomeActive,     name = "Home",     icon = ICON_HOME},
+    {btn = btnQuest,    set = setQuestActive,    name = "Quest",    icon = ICON_QUEST},
+    {btn = btnShop,     set = setShopActive,     name = "Shop",     icon = ICON_SHOP},
+    {btn = btnUpdate,   set = setUpdateActive,   name = "Update",   icon = ICON_UPDATE},
+    {btn = btnServer,   set = setServerActive,   name = "Server",   icon = ICON_SERVER},
+    {btn = btnSettings, set = setSettingsActive, name = "Settings", icon = ICON_SETTINGS},
 }
 
--- เซ็ตชื่อที่โชว์บนปุ่ม (ฝั่งซ้าย) ตาม label (ภาษาไทย)
-for _, t in ipairs(tabs) do
-    local b = t.btn
-    if not b then continue end
-
-    local textObj = b:FindFirstChild(BUTTON_TEXT_CHILD_NAME)
-    if textObj and textObj:IsA("TextLabel") then
-        textObj.Text = t.label
-    elseif b:IsA("TextButton") then
-        b.Text = t.label
-    end
-end
-
-local lastLeftY = 0
-
 local function activateTab(t)
-    -- จำตำแหน่งสกอร์ลซ้ายไว้ก่อน
+    -- จดตำแหน่งสกอร์ลซ้ายไว้ก่อน (กันเด้ง)
     lastLeftY = LeftScroll.CanvasPosition.Y
-
-    -- set active / inactive
-    for _, x in ipairs(tabs) do
-        x.set(x == t)
-    end
-
-    -- ใช้ id (อังกฤษ) เป็น key ภายใน เพื่อให้ตรงกับ registerRight("Player") ฯลฯ
-    showRight(t.id, t.icon)
-
-    -- รักษา scroll position
+    for _,x in ipairs(tabs) do x.set(x == t) end
+    showRight(t.name, t.icon)
     task.defer(function()
         refreshLeftCanvas()
         local viewH = LeftScroll.AbsoluteSize.Y
         local maxY  = math.max(0, LeftScroll.CanvasSize.Y.Offset - viewH)
         LeftScroll.CanvasPosition = Vector2.new(0, math.clamp(lastLeftY,0,maxY))
-
+        -- ถ้าปุ่มอยู่นอกเฟรม ค่อยเลื่อนให้อยู่พอดี
         local btn = t.btn
         if btn and btn.Parent then
             local top = btn.AbsolutePosition.Y - LeftScroll.AbsolutePosition.Y
             local bot = top + btn.AbsoluteSize.Y
             local pad = 8
-
             if top < 0 then
                 LeftScroll.CanvasPosition = LeftScroll.CanvasPosition + Vector2.new(0, top - pad)
             elseif bot > viewH then
                 LeftScroll.CanvasPosition = LeftScroll.CanvasPosition + Vector2.new(0, (bot - viewH) + pad)
             end
-
             lastLeftY = LeftScroll.CanvasPosition.Y
         end
     end)
 end
 
-for _, t in ipairs(tabs) do
-    t.btn.MouseButton1Click:Connect(function()
-        activateTab(t)
-    end)
+for _,t in ipairs(tabs) do
+    t.btn.MouseButton1Click:Connect(function() activateTab(t) end)
 end
 
--- เปิดแท็บแรก
+-- เปิดด้วยแท็บแรก
 activateTab(tabs[1])
 
 -- ===== Start visible & sync toggle to this UI =====
