@@ -1129,7 +1129,7 @@ registerRight("Player", function(scroll)
     local header=Instance.new("TextLabel",scroll)
     header.Name="Section_FlightHeader"; header.BackgroundTransparency=1; header.Size=UDim2.new(1,0,0,36)
     header.Font=Enum.Font.GothamBold; header.TextSize=16; header.TextColor3=THEME.WHITE
-    header.TextXAlignment=Enum.TextXAlignment.Left; header.Text="โหมดบิน 🧑‍✈️"; header.LayoutOrder=nextOrder
+    header.TextXAlignment=Enum.TextXAlignment.Left; header.Text="》》》โหมดบิน 🧑‍✈️《《《"; header.LayoutOrder=nextOrder
 
     local row=Instance.new("Frame",scroll); row.Name="Row_FlightToggle"; row.Size=UDim2.new(1,-6,0,46)
     row.BackgroundColor3=THEME.BLACK; corner(row,12); stroke(row,2.2,THEME.GREEN); row.LayoutOrder=nextOrder+1
@@ -1676,7 +1676,7 @@ registerRight("Player", function(scroll)
     header.BackgroundTransparency=1; header.Size=UDim2.new(1,0,0,32)
     header.Font=Enum.Font.GothamBold; header.TextSize=16; header.TextColor3=THEME.WHITE
     header.TextXAlignment=Enum.TextXAlignment.Left
-    header.Text="โหมดความไว ⚡"
+    header.Text="》》》โหมดความไว ⚡《《《"
 
     -- Master
     local master=Instance.new("Frame",scroll); master.Name="RJ_Master"; master.LayoutOrder=baseOrder+1
