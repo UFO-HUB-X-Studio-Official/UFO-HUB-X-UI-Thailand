@@ -679,9 +679,26 @@ local function addHeader(parentScroll, titleText, iconId)
     head.Text = titleText
 end
 
--- 6) API หลัก
-function showRight(titleText, iconId)
-    local tab = titleText
+------------------------------------------------------------
+-- 6) API หลัก + แปลชื่อหัวข้อเป็นภาษาไทย
+------------------------------------------------------------
+
+-- map ชื่อแท็บ (key ภาษาอังกฤษด้านใน) -> หัวข้อภาษาไทยที่โชว์
+local TAB_TITLE_TH = {
+    Player   = "ผู้เล่น",
+    Home     = "หน้าหลัก",
+    Quest    = "ภารกิจ",
+    Shop     = "ร้านค้า",
+    Update   = "อัปเดต",
+    Server   = "เซิร์ฟเวอร์",
+    Settings = "การตั้งค่า",
+}
+
+function showRight(tabKey, iconId)
+    -- tabKey = key ภาษาอังกฤษ ("Player","Home","Settings",...)
+    local tab = tabKey
+    -- ข้อความที่โชว์บนหัวข้อ ใช้ภาษาไทย ถ้ามีในตาราง ไม่มีก็ใช้อังกฤษเดิม
+    local titleText = TAB_TITLE_TH[tabKey] or tabKey
 
     if RSTATE.current and RSTATE.frames[RSTATE.current] then
         RSTATE.scrollY[RSTATE.current] = RSTATE.frames[RSTATE.current].scroll.CanvasPosition.Y
@@ -692,8 +709,9 @@ function showRight(titleText, iconId)
     f.root.Visible = true
 
     if not f.built then
+        -- ตรงนี้ใช้ titleText (ไทย) สำหรับหัวข้อ
         addHeader(f.scroll, titleText, iconId)
-        -- เรียกทุก builder ของแท็บนี้ (เรียงตามที่ register เข้ามา)
+
         local list = RSTATE.builders[tab] or {}
         for _, builder in ipairs(list) do
             pcall(builder, f.scroll)
@@ -710,7 +728,7 @@ function showRight(titleText, iconId)
 
     RSTATE.current = tab
 end
-
+    
 -- 7) ตัวอย่างแท็บ (ลบเดโมรายการออกแล้ว)
 registerRight("Player", function(scroll)
     -- วาง UI ของ Player ที่นี่ (ตอนนี้ปล่อยว่าง ไม่มี Item#)
