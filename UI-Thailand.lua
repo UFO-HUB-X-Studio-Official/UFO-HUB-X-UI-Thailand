@@ -1682,7 +1682,7 @@ registerRight("Player", function(scroll)
     local master=Instance.new("Frame",scroll); master.Name="RJ_Master"; master.LayoutOrder=baseOrder+1
     master.Size=UDim2.new(1,-6,0,46); master.BackgroundColor3=THEME.BLACK; corner(master,12); stroke(master,2.2,THEME.GREEN)
     local mLab=Instance.new("TextLabel",master); mLab.BackgroundTransparency=1; mLab.Size=UDim2.new(1,-140,1,0); mLab.Position=UDim2.new(0,16,0,0)
-    mLab.Font=Enum.Font.GothamBold; mLab.TextSize=13; mLab.TextColor3=THEME.WHITE; mLab.TextXAlignment=Enum.TextXAlignment.Left; mLab.Text="เปิด โหมดความไว ⚡"
+    mLab.Font=Enum.Font.GothamBold; mLab.TextSize=13; mLab.TextColor3=THEME.WHITE; mLab.TextXAlignment=Enum.TextXAlignment.Left; mLab.Text="เปิด โหมดความไว"
     local mSw=Instance.new("Frame",master); mSw.AnchorPoint=Vector2.new(1,0.5); mSw.Position=UDim2.new(1,-12,0.5,0)
     mSw.Size=UDim2.fromOffset(52,26); mSw.BackgroundColor3=THEME.BLACK; corner(mSw,13); stroke(mSw,1.8, masterOn and THEME.GREEN or THEME.RED)
     local mKnob=Instance.new("Frame",mSw); mKnob.Size=UDim2.fromOffset(22,22); mKnob.Position=UDim2.new(masterOn and 1 or 0, masterOn and -24 or 2, 0.5,-11); mKnob.BackgroundColor3=THEME.WHITE; corner(mKnob,11)
@@ -2763,7 +2763,7 @@ registerRight("Player", function(scroll)
     header.TextSize = 16
     header.TextColor3 = THEME.TEXT
     header.TextXAlignment = Enum.TextXAlignment.Left
-    header.Text = "Mong Thalu 👁 (X-Ray Vision)"
+    header.Text = "โหมด มองทะลุ 👁️)"
     header.LayoutOrder = base + 1
 
     local function makeRow(name, order, labelText, getState, setState)
@@ -2826,7 +2826,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row1",
         base + 2,
-        "X-Ray Vision (See players through walls)",
+        "เปิด เห็นผู้เล่นทะลุกำแพง)",
         function() return XR.xrayEnabled end,
         setXrayEnabled
     )
@@ -2834,7 +2834,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row2",
         base + 3,
-        "Foot Line + Box ESP (Green)",
+        "เปิด เส้นที่เท้า + กล่องระบุตำแหน่ง",
         function() return XR.feetEnabled end,
         setFeetEnabled
     )
@@ -2842,7 +2842,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row3",
         base + 4,
-        "Player Name ESP (Show player names over heads)",
+        "เปิด แสดงชื่อผู้เล่นเหนือศีรษะ",
         function() return XR.namesEnabled end,
         setNamesEnabled
     )
@@ -2850,7 +2850,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row4",
         base + 5,
-        "Player Health (HP Bar)",
+        "เปิด แสดงเลือดผู้เล่น",
         function() return XR.healthEnabled end,
         setHealthEnabled
     )
@@ -2858,7 +2858,7 @@ registerRight("Player", function(scroll)
     makeRow(
         "XRAY_Row5",
         base + 6,
-        "Player Distance (Studs)",
+        "เปิด แสดง ระยะห่างผู้เล่น",
         function() return XR.distanceEnabled end,
         setDistanceEnabled
     )
