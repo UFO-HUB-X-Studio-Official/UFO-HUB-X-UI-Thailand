@@ -3182,7 +3182,7 @@ registerRight("Player", function(scroll)
     header.TextSize = 16
     header.TextColor3 = THEME.TEXT
     header.TextXAlignment = Enum.TextXAlignment.Left
-    header.Text = "》》》🏃วาร์ปไปหาผู้เล่น《《《"
+    header.Text = "》》》วาร์ปไปหาผู้เล่น 🌀《《《"
     header.LayoutOrder = base + 1
 
     local function makeRow(name, order, labelText)
@@ -3690,7 +3690,7 @@ registerRight("Player", function(scroll)
     startLabel.Font = Enum.Font.GothamBold
     startLabel.TextSize = 14
     startLabel.TextColor3 = THEME.WHITE
-    startLabel.Text = "Start"
+    startLabel.Text = "เริ่ม"
     startLabel.TextXAlignment = Enum.TextXAlignment.Center
 
     local startBtn = Instance.new("TextButton")
