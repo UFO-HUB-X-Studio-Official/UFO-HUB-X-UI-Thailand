@@ -548,12 +548,12 @@ local function makeTabButton(parent, label, iconId)
 end
 
 local btnPlayer,  setPlayerActive   = makeTabButton(LeftScroll, "ผู้เล่น",  ICON_PLAYER)
-local btnHome,    setHomeActive     = makeTabButton(LeftScroll, "Home",    ICON_HOME)
-local btnQuest,   setQuestActive    = makeTabButton(LeftScroll, "Quest",   ICON_QUEST)
-local btnShop,    setShopActive     = makeTabButton(LeftScroll, "Shop",    ICON_SHOP)
-local btnUpdate,  setUpdateActive   = makeTabButton(LeftScroll, "Update",  ICON_UPDATE)
-local btnServer,  setServerActive   = makeTabButton(LeftScroll, "Server",  ICON_SERVER)
-local btnSettings,setSettingsActive = makeTabButton(LeftScroll, "Settings",ICON_SETTINGS)
+local btnHome,    setHomeActive     = makeTabButton(LeftScroll, "หน้าหลัก",    ICON_HOME)
+local btnQuest,   setQuestActive    = makeTabButton(LeftScroll, "ภารกิจ",   ICON_QUEST)
+local btnShop,    setShopActive     = makeTabButton(LeftScroll, "ร้านค้า",    ICON_SHOP)
+local btnUpdate,  setUpdateActive   = makeTabButton(LeftScroll, "อัปเดต",  ICON_UPDATE)
+local btnServer,  setServerActive   = makeTabButton(LeftScroll, "เซิร์ฟเวอร์",  ICON_SERVER)
+local btnSettings,setSettingsActive = makeTabButton(LeftScroll, "การตั้งค่า",ICON_SETTINGS)
 
 -- ========== RIGHT ==========
 local RightShell=Instance.new("Frame",Body)
@@ -5534,9 +5534,9 @@ local tabs = {
     {btn = btnHome,     set = setHomeActive,     name = "Home",     icon = ICON_HOME},
     {btn = btnQuest,    set = setQuestActive,    name = "Quest",    icon = ICON_QUEST},
     {btn = btnShop,     set = setShopActive,     name = "Shop",     icon = ICON_SHOP},
-    {btn = btnUpdate,   set = setUpdateActive,   name = "Update",   icon = ICON_UPDATE},
-    {btn = btnServer,   set = setServerActive,   name = "Server",   icon = ICON_SERVER},
-    {btn = btnSettings, set = setSettingsActive, name = "Settings", icon = ICON_SETTINGS},
+    {btn = btnUpdate,   set = setUpdateActive,   name = "อัปเดต",   icon = ICON_UPDATE},
+    {btn = btnServer,   set = setServerActive,   name = "เซิร์ฟเวอร์",   icon = ICON_SERVER},
+    {btn = btnSettings, set = setSettingsActive, name = "การตั้งค่า", icon = ICON_SETTINGS},
 }
 
 local function activateTab(t)
