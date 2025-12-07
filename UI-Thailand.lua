@@ -5276,7 +5276,7 @@ do
     local box1 = buildBox(gui1)
     buildLogo(box1, LOGO_STEP1)
     buildTitle(box1)
-    local msg1 = buildMsg(box1, "Initializing... please wait")
+    local msg1 = buildMsg(box1, "กำลังเริ่มต้นระบบ... โปรดรอ")
 
     local barWidth = TOAST_W - BAR_LEFT - BAR_RIGHT_PAD
     local track = Instance.new("Frame"); track.BackgroundColor3 = Color3.fromRGB(25,25,25); track.BorderSizePixel = 0
@@ -5307,7 +5307,7 @@ do
             pct.Text = progress .. "%"
             RunS.Heartbeat:Wait()
         end
-        msg1.Text = "Loaded successfully."
+        msg1.Text = "โหลดสำเร็จแล้ว."
         task.wait(0.25)
         local out1 = tween(box1, 0.32, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut,
             {Position = UDim2.new(1, -EDGE_RIGHT_PAD, 1, -(EDGE_BOTTOM_PAD - 24))})
@@ -5318,7 +5318,7 @@ do
         local box2 = buildBox(gui2)
         buildLogo(box2, LOGO_STEP2)
         buildTitle(box2)
-        buildMsg(box2, "Download UI completed. ✅")
+        buildMsg(box2, "ดาวน์โหลด UI เสร็จสมบูรณ์ ✅")
         tween(box2, 0.22, Enum.EasingStyle.Quart, Enum.EasingDirection.Out,
             {Position = UDim2.new(1, -EDGE_RIGHT_PAD, 1, -EDGE_BOTTOM_PAD)}):Play()
 
