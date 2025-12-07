@@ -2763,7 +2763,7 @@ registerRight("Player", function(scroll)
     header.TextSize = 16
     header.TextColor3 = THEME.TEXT
     header.TextXAlignment = Enum.TextXAlignment.Left
-    header.Text = "โหมด มองทะลุ 👁️)"
+    header.Text = "》》》โหมด มองทะลุ 👁️《《《"
     header.LayoutOrder = base + 1
 
     local function makeRow(name, order, labelText, getState, setState)
@@ -3182,7 +3182,7 @@ registerRight("Player", function(scroll)
     header.TextSize = 16
     header.TextColor3 = THEME.TEXT
     header.TextXAlignment = Enum.TextXAlignment.Left
-    header.Text = "Warp to Player 🔭"
+    header.Text = "》》》🏃วาร์ปไปหาผู้เล่น《《《"
     header.LayoutOrder = base + 1
 
     local function makeRow(name, order, labelText)
@@ -3213,7 +3213,7 @@ registerRight("Player", function(scroll)
     -- Row 1 : A V2 เต็มระบบ + Overlay เลือกผู้เล่น
     ------------------------------------------------------------------------
     local panelParent = scroll.Parent
-    local row1 = makeRow("WARP_Row1", base + 2, "Select Target Player")
+    local row1 = makeRow("WARP_Row1", base + 2, "เลือกเป้าหมายผู้เล่น")
 
     local selectBtn = Instance.new("TextButton")
     selectBtn.Name = "WARP_Select"
@@ -3223,7 +3223,7 @@ registerRight("Player", function(scroll)
     selectBtn.Size = UDim2.new(0,220,0,28)
     selectBtn.BackgroundColor3 = THEME.BLACK
     selectBtn.AutoButtonColor = false
-    selectBtn.Text = "Select Player"
+    selectBtn.Text = "🔎 ค้นหา ชื่อผู้เล่น"
     selectBtn.Font = Enum.Font.GothamBold
     selectBtn.TextSize = 13
     selectBtn.TextColor3 = THEME.WHITE
@@ -3268,7 +3268,7 @@ registerRight("Player", function(scroll)
             local display = (pl.DisplayName ~= "" and pl.DisplayName) or pl.Name
             selectBtn.Text = display
         else
-            selectBtn.Text = "Select Player"
+            selectBtn.Text = "🔎 ค้นหา ชื่อผู้เล่น"
         end
     end
     refreshSelectedLabel()
@@ -3343,7 +3343,7 @@ registerRight("Player", function(scroll)
         searchBox.Font = Enum.Font.GothamBold
         searchBox.TextSize = 14
         searchBox.TextColor3 = THEME.WHITE
-        searchBox.PlaceholderText = "🔍 Search Player"
+        searchBox.PlaceholderText = "🔎 ค้นหา ชื่อผู้เล่น"
         searchBox.TextXAlignment = Enum.TextXAlignment.Center
         searchBox.Text = ""
         searchBox.ZIndex = body.ZIndex + 1
@@ -3631,7 +3631,7 @@ registerRight("Player", function(scroll)
     row2Switch = makeSwitchRow(
         "WARP_Row2",
         base + 3,
-        "Warp to Player (Instant)",
+        "วาร์ปไปหาผู้เล่นทันที",
         function() return WARP.mode == "warp" end,
         function(on)
             if on then
@@ -3651,7 +3651,7 @@ registerRight("Player", function(scroll)
     row3Switch = makeSwitchRow(
         "WARP_Row3",
         base + 4,
-        "Fly to Player (Smooth)",
+        "บินไปหาผู้เล่น",
         function() return WARP.mode == "fly" end,
         function(on)
             if on then
