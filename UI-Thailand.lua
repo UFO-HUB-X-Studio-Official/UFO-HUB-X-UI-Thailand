@@ -4546,7 +4546,7 @@ registerRight("Settings", function(scroll)
         setSave("Settings.Smoother.Mode", S.mode)
     end)
 
-    setPl   = makeRow("A1_Plastic","เปลี่ยนแมพ เป็นดินน้ำมัน)", 13, function(v)
+    setPl   = makeRow("A1_Plastic","เปลี่ยนแมพ เป็นดินน้ำมัน", 13, function(v)
         S.plastic=v; plasticMode(v)
         setSave("Settings.Smoother.Plastic", v)
     end)
@@ -5307,7 +5307,7 @@ do
             pct.Text = progress .. "%"
             RunS.Heartbeat:Wait()
         end
-        msg1.Text = "โหลดสำเร็จแล้ว."
+        msg1.Text = "โหลดสำเร็จแล้ว"
         task.wait(0.25)
         local out1 = tween(box1, 0.32, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut,
             {Position = UDim2.new(1, -EDGE_RIGHT_PAD, 1, -(EDGE_BOTTOM_PAD - 24))})
