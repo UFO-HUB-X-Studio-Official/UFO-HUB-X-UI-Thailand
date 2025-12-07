@@ -4063,12 +4063,12 @@ registerRight("Server", function(scroll)
     local btn = Instance.new("TextButton", btnWrap)
     btn.BackgroundTransparency=1; btn.Size=UDim2.fromScale(1,1)
     btn.Font=Enum.Font.GothamBold; btn.TextSize=13; btn.TextColor3=THEME.TEXT
-    btn.Text="CHANGE"
+    btn.Text="เปลี่ยน เซิร์ฟเวอร์ "
 
     local busy=false
     local function setBusy(v)
         busy=v
-        btn.Text = v and "HOPPING..." or "CHANGE"
+        btn.Text = v and "กำลังย้าย เซิร์ฟเวอร์ ..." or "เปลี่ยน เซิร์ฟเวอร์"
         local st = btnWrap:FindFirstChildOfClass("UIStroke")
         if st then st.Color = v and THEME.GREY or THEME.GREEN end
     end
@@ -4114,7 +4114,7 @@ registerRight("Server", function(scroll)
                     TeleportService:TeleportToPlaceInstance(game.PlaceId, targetJob, lp)
                 end)
                 if not ok then
-                    warn("TeleportToPlaceInstance failed:", tpErr)
+                    warn("ยาย เซิร์ฟเวอร์ ไม่สำเร็จ ❌:", tpErr)
                     TeleportService:Teleport(game.PlaceId, lp) -- fallback (may land same server)
                 end
             else
@@ -4276,7 +4276,7 @@ registerRight("Server", function(scroll)
         tb.Font=Enum.Font.Gotham; tb.TextSize=13; tb.TextColor3=THEME.WHITE
         tb.ClearTextOnFocus=false
         tb.Text = ""
-        tb.PlaceholderText = placeholder or "Paste JobId / VIP link / roblox:// link…"
+        tb.PlaceholderText = placeholder or "วาง JobId / ลิงก์ VIP / ลิงก์ roblox://…"
         tb.PlaceholderColor3 = Color3.fromRGB(180,180,185)
         tb.TextXAlignment = Enum.TextXAlignment.Left
         return tb
@@ -4297,11 +4297,11 @@ registerRight("Server", function(scroll)
             local jobId = deep_job or plain_job
             return { mode="public", placeId = tonumber(deep_place) or game.PlaceId, jobId = jobId }
         else
-            return nil, "Invalid input. Paste a JobId, VIP link (privateServerLinkCode=...), or a roblox:// link."
+            return nil, "ข้อมูลไม่ถูกต้อง กรุณาวาง JobId หรือ ลิงก์ VIP (privateServerLinkCode)=...), or a roblox:// link."
         end
     end
 
-    local inputRow = makeRow("SID_Input", "ที่ใส่ รหัสเซิร์ฟเวอร์ / ลิงก์เซิร์ฟเวอร์", 2001)
+    local inputRow = makeRow("SID_Input", "ที่ใส่รหัส เซิร์ฟเวอร์ ", 2001)
     local inputBox = inputRow:FindFirstChildWhichIsA("Frame") and inputRow:FindFirstChildWhichIsA("Frame"):FindFirstChildOfClass("TextBox")
     if not inputBox then
         inputBox = makeRightInput(inputRow, "เช่น JobId หรือ ลิงก์ VIP หรือ roblox://…")
