@@ -3740,7 +3740,7 @@ registerRight("Update", function(scroll)
     local head = Instance.new("TextLabel",scroll)
     head.Name="UP_Header"; head.LayoutOrder=base; head.BackgroundTransparency=1; head.Size=UDim2.new(1,0,0,32)
     head.Font=Enum.Font.GothamBlack; head.TextSize=16; head.TextColor3=THEME.WHITE; head.TextXAlignment=Enum.TextXAlignment.Left
-    head.Text="Map Update 🗺️"
+    head.Text="》》》อัปเดต เกม 🗺️《《《"
 
     -- wrap
     local wrap = Instance.new("Frame",scroll)
@@ -4033,7 +4033,7 @@ registerRight("Server", function(scroll)
     local head = scroll:FindFirstChild("SV_Header") or Instance.new("TextLabel", scroll)
     head.Name="SV_Header"; head.BackgroundTransparency=1; head.Size=UDim2.new(1,0,0,36)
     head.Font=Enum.Font.GothamBold; head.TextSize=16; head.TextColor3=THEME.TEXT
-    head.TextXAlignment=Enum.TextXAlignment.Left; head.Text="Server 🌐"; head.LayoutOrder = 10
+    head.TextXAlignment=Enum.TextXAlignment.Left; head.Text="》》》เซิร์ฟเวอร์ 🌐《《《"; head.LayoutOrder = 10
 
     -- Clear same-name rows (A V1 rule, no wrappers)
     for _,n in ipairs({"S1_Change","S2_PlayerCount"}) do local o=scroll:FindFirstChild(n) if o then o:Destroy() end end
@@ -4055,7 +4055,7 @@ registerRight("Server", function(scroll)
     ----------------------------------------------------------------
     -- (#1) Change Server — one-tap button (no toggle)
     ----------------------------------------------------------------
-    local r1 = makeRow("S1_Change", "Change Server", 11)
+    local r1 = makeRow("S1_Change", "เปลี่ยนเซิร์ฟเวอร์", 11)
     local btnWrap = Instance.new("Frame", r1)
     btnWrap.AnchorPoint=Vector2.new(1,0.5); btnWrap.Position=UDim2.new(1,-12,0.5,0)
     btnWrap.Size=UDim2.fromOffset(110,28); btnWrap.BackgroundColor3=THEME.BLACK; corner(btnWrap,8); stroke(btnWrap,1.8,THEME.GREEN)
@@ -4131,7 +4131,7 @@ registerRight("Server", function(scroll)
     ----------------------------------------------------------------
     -- (#2) Live player count — real-time
     ----------------------------------------------------------------
-    local r2 = makeRow("S2_PlayerCount", "Players in this server", 12)
+    local r2 = makeRow("S2_PlayerCount", "ผู้เล่นในเซิร์ฟเวอร์นี้", 12)
 
     local countBox = Instance.new("Frame", r2)
     countBox.AnchorPoint=Vector2.new(1,0.5); countBox.Position=UDim2.new(1,-12,0.5,0)
@@ -4240,7 +4240,7 @@ registerRight("Server", function(scroll)
         local head = Instance.new("TextLabel", scroll)
         head.Name="SID_Header"; head.BackgroundTransparency=1; head.Size=UDim2.new(1,0,0,36)
         head.Font=Enum.Font.GothamBold; head.TextSize=16; head.TextColor3=THEME.TEXT
-        head.TextXAlignment=Enum.TextXAlignment.Left; head.Text="Server ID 🔑"
+        head.TextXAlignment=Enum.TextXAlignment.Left; head.Text="》》》รหัสเซิร์ฟเวอร์ 🔑《《《"
         head.LayoutOrder = 2000
     end
 
@@ -4301,23 +4301,23 @@ registerRight("Server", function(scroll)
         end
     end
 
-    local inputRow = makeRow("SID_Input", "Server ID / Link", 2001)
+    local inputRow = makeRow("SID_Input", "ที่ใส่ รหัสเซิร์ฟเวอร์ / ลิงก์เซิร์ฟเวอร์", 2001)
     local inputBox = inputRow:FindFirstChildWhichIsA("Frame") and inputRow:FindFirstChildWhichIsA("Frame"):FindFirstChildOfClass("TextBox")
     if not inputBox then
-        inputBox = makeRightInput(inputRow, "e.g. JobId or VIP link or roblox://...")
+        inputBox = makeRightInput(inputRow, "เช่น JobId หรือ ลิงก์ VIP หรือ roblox://…")
     else
         if inputBox.Text == "TextBox" then inputBox.Text = "" end
     end
 
-    local joinRow = makeRow("SID_Join", "Join by this Server", 2002)
+    local joinRow = makeRow("SID_Join", "เข้าร่วมผ่านเซิร์ฟเวอร์นี้", 2002)
     if not joinRow:FindFirstChildOfClass("TextButton") then
-        local joinBtn = makeActionButton(joinRow, "Join")
+        local joinBtn = makeActionButton(joinRow, "เข้าร่วม")
         joinBtn.MouseButton1Click:Connect(function()
             local raw = inputBox.Text or ""
             local target, err = parseInputToTeleport(raw)
             if not target then QuickToast(err); return end
             if target.mode=="public" and tostring(target.jobId)==tostring(game.JobId) then
-                QuickToast("You are already in this server."); return
+                QuickToast("คุณอยู่ในเซิร์ฟเวอร์นี้อยู่แล้ว"); return
             end
             local ok, msg = false, nil
             if target.mode=="private" then
@@ -4326,22 +4326,22 @@ registerRight("Server", function(scroll)
                 ok, msg = pcall(function() TeleportService:TeleportToPlaceInstance(target.placeId, target.jobId, lp) end)
             end
             if not ok then
-                QuickToast("Teleport failed: "..tostring(msg))
+                QuickToast("ย้าย เซิร์ฟเวอร์ ไม่สำเร็จ ❌: "..tostring(msg))
             else
-                local tip = (target.mode=="private") and ("Private code: "..string.sub(target.code,1,6).."…")
-                                                   or  ("JobId: "..string.sub(target.jobId,1,8).."…")
-                QuickToast("Teleporting…  "..tip)
+                local tip = (target.mode=="private") and ("รหัสส่วนตัว: "..string.sub(target.code,1,6).."…")
+                                                   or  ("รหัสเซิร์ฟเวอร์เฉพาะ (JobId): "..string.sub(target.jobId,1,8).."…")
+                QuickToast("กำลังย้าย เซิร์ฟเวอร์…  "..tip)
             end
         end)
     end
 
-    local copyRow = makeRow("SID_Copy", "Copy current Server ID", 2003)
+    local copyRow = makeRow("SID_Copy", "คัดลอกรหัสเซิร์ฟเวอร์ปัจจุบัน", 2003)
     if not copyRow:FindFirstChildOfClass("TextButton") then
-        local copyBtn = makeActionButton(copyRow, "Copy ID")
+        local copyBtn = makeActionButton(copyRow, "คัดลอก รหัส")
         copyBtn.MouseButton1Click:Connect(function()
             local id = tostring(game.JobId or "")
             local ok = pcall(function() setclipboard(id) end)
-            if ok then QuickToast("Server ID copied ✅") else QuickToast("Current Server ID: "..id) end
+            if ok then QuickToast("คัดลอก รหัส เซิร์ฟเวอร์ แล้ว ✅") else QuickToast("รหัสเซิร์ฟเวอร์ปัจจุบัน: "..id) end
             if inputBox and id~="" then inputBox.Text = id end
         end)
     end
