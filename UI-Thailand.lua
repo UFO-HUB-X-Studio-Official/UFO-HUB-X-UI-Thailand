@@ -436,7 +436,7 @@ task.defer(function()
         btnPlayer and btnHome and btnQuest and btnShop and btnUpdate and btnServer and btnSettings
 
     btnPlayer.MouseButton1Click:Connect(function()
-        onTabClick("Player", ICON_PLAYER, function()
+        onTabClick("ผู้เล่น", ICON_PLAYER, function()
             setPlayerActive(true); setHomeActive(false); setQuestActive(false)
             setShopActive(false); setUpdateActive(false); setServerActive(false); setSettingsActive(false)
         end, btnPlayer)
