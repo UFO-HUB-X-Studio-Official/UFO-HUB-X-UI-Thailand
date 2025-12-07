@@ -436,7 +436,7 @@ task.defer(function()
         btnPlayer and btnHome and btnQuest and btnShop and btnUpdate and btnServer and btnSettings
 
     btnPlayer.MouseButton1Click:Connect(function()
-        onTabClick("ผู้เล่น", ICON_PLAYER, function()
+        onTabClick("Player", ICON_PLAYER, function()
             setPlayerActive(true); setHomeActive(false); setQuestActive(false)
             setShopActive(false); setUpdateActive(false); setServerActive(false); setSettingsActive(false)
         end, btnPlayer)
@@ -547,7 +547,7 @@ local function makeTabButton(parent, label, iconId)
     return b, setActive
 end
 
-local btnPlayer,  setPlayerActive   = makeTabButton(LeftScroll, "Player",  ICON_PLAYER)
+local btnPlayer,  setPlayerActive   = makeTabButton(LeftScroll, "ผู้เล่น",  ICON_PLAYER)
 local btnHome,    setHomeActive     = makeTabButton(LeftScroll, "Home",    ICON_HOME)
 local btnQuest,   setQuestActive    = makeTabButton(LeftScroll, "Quest",   ICON_QUEST)
 local btnShop,    setShopActive     = makeTabButton(LeftScroll, "Shop",    ICON_SHOP)
